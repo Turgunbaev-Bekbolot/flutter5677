@@ -83,7 +83,8 @@ class _EpizodesScreenState extends State<EpizodesScreen> {
                           child: CustomSeries(
                             text: state.epizodModel![index].episode!,
                             text2: state.epizodModel![index].name!,
-                            textData: state.epizodModel![index].airDate!,
+                            textData:
+                                state.epizodModel![index].airDate!.toString(),
                             image: state.epizodModel![index].id.toString(),
                           ),
                         );

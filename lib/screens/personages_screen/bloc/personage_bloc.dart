@@ -9,7 +9,7 @@ part 'personage_state.dart';
 
 class PersonageBloc extends Bloc<PersonageEvent, PersonageState> {
   PersonageBloc() : super(PersonageInitial()) {
-    on<GetPersonEvent>((event, emit) async {
+    on<GetPersonageEvent>((event, emit) async {
       emit(PersonageLoadingState());
       try {
         List<CharacterModel> characterModelList =

@@ -26,7 +26,7 @@ class CatchException {
       } else if (error.response!.statusCode == 409) {
         return CatchException(message: error.response!.data["message"]);
       } else {
-        return CatchException(message: 'Такого города не существует');
+        return CatchException(message: 'Такого пользователя не существует');
       }
     }
     if (error is CatchException) {

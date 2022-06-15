@@ -1,4 +1,4 @@
-import 'package:rick_and_morty_app/screens/auth_screen/auth_provider.dart';
+import 'package:rick_and_morty_app/screens/auth_screen/bloc/auth_provider.dart';
 
 class AuthRepository {
   createUser({
@@ -17,5 +17,17 @@ class AuthRepository {
       userName: password,
     );
     return "";
+  }
+
+  login({
+    required String login,
+    required String password,
+  }) {
+    AuthProvider provider = AuthProvider();
+
+    return provider.login(
+      password: password,
+      userName: login,
+    );
   }
 }

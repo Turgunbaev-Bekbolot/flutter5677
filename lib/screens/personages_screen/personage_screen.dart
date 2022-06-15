@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty_app/commands/constans.dart';
 import 'package:rick_and_morty_app/screens/personages_screen/bloc/personage_bloc.dart';
 import 'package:rick_and_morty_app/screens/personages_screen/personage_information.dart';
 import 'package:rick_and_morty_app/screens/personages_screen/personage_widgets.dart';
@@ -20,8 +21,9 @@ class _PersonageScreenState extends State<PersonageScreen> {
   bool isListView = true;
   @override
   void initState() {
+    print('1111111 ====== ${Constans.token}');
     personBloc = PersonageBloc();
-    personBloc.add(GetPersonEvent());
+    personBloc.add(GetPersonageEvent());
     super.initState();
   }
 
@@ -47,7 +49,7 @@ class _PersonageScreenState extends State<PersonageScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'ВСЕГО ПЕРСОНАЖЕЙ: 20',
+                      'ВСЕГО ПЕРСОНАЖЕЙ: ${state.characterModel.length}',
                       style: TextStyle(
                         color: Color(0xff828282),
                         fontSize: 10.sp,
@@ -92,7 +94,7 @@ class _PersonageScreenState extends State<PersonageScreen> {
                               );
                             }))
                         : GridView.builder(
-                            itemCount: 20,
+                            itemCount: state.characterModel.length,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,

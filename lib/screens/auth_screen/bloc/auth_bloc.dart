@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rick_and_morty_app/helpers/catch_exepton_helper.dart';
-import 'package:rick_and_morty_app/screens/auth_screen/auth_repository.dart';
+import 'package:rick_and_morty_app/screens/auth_screen/bloc/auth_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -12,6 +12,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignInEvent>((event, emit) async {
       emit(AuthLoadingState());
       try {
+        await AuthRepository().login(
+          login: event.login,
+          password: event.password,
+        );
         emit(AuthFetchedState());
       } catch (e) {
         emit(AuthErrorState(error: CatchException.convertException(e)));

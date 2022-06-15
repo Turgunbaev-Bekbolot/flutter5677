@@ -141,11 +141,13 @@ class _LoginPasswordState extends State<LoginPassword> {
                           context,
                           MaterialPageRoute(
                               builder: ((context) => CustomBottomBar())));
+                      loginController.clear();
+                      passwordController.clear();
                     }
                   },
                   builder: (context, state) {
                     if (state is AuthLoadingState) {
-                      return CircularProgressIndicator();
+                      return Center(child: CircularProgressIndicator());
                     }
 
                     return SignInButton(

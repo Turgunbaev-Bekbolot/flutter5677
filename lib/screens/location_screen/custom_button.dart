@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               child: Image.network(
-                'https://static.wikia.nocookie.net/rickandmorty/images/4/43/Snake_Planet.png/revision/latest?cb=20191217203922',
+                image,
                 fit: BoxFit.cover,
               ),
             ),

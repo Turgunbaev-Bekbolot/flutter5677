@@ -11,7 +11,7 @@ class LocationProvider {
         '/location',
       );
       if (response.statusCode == 200) {
-        List<LocationModel> locationModelList = response.data['results']
+        List<LocationModel> locationModelList = response.data
             .map<LocationModel>((el) => LocationModel.fromJson(el))
             .toList();
         return locationModelList;

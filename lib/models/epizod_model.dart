@@ -8,20 +8,22 @@ class EpizodModel {
   EpizodModel({
     this.id,
     this.name,
+    this.url,
     this.airDate,
     this.episode,
+    this.image,
+    this.createAt,
     this.characters,
-    this.url,
-    this.created,
   });
 
   int? id;
   String? name;
-  String? airDate;
-  String? episode;
-  List<String>? characters;
   String? url;
-  DateTime? created;
+  DateTime? airDate;
+  String? episode;
+  String? image;
+  DateTime? createAt;
+  List<int>? characters;
 
   factory EpizodModel.fromRawJson(String str) =>
       EpizodModel.fromJson(json.decode(str));
@@ -31,25 +33,31 @@ class EpizodModel {
   factory EpizodModel.fromJson(Map<String, dynamic> json) => EpizodModel(
         id: json["id"] == null ? null : json["id"],
         name: json["name"] == null ? null : json["name"],
-        airDate: json["air_date"] == null ? null : json["air_date"],
+        url: json["url"] == null ? null : json["url"],
+        airDate:
+            json["air_date"] == null ? null : DateTime.parse(json["air_date"]),
         episode: json["episode"] == null ? null : json["episode"],
+        image: json["image"] == null ? null : json["image"],
+        createAt: json["create_at"] == null
+            ? null
+            : DateTime.parse(json["create_at"]),
         characters: json["characters"] == null
             ? null
-            : List<String>.from(json["characters"].map((x) => x)),
-        url: json["url"] == null ? null : json["url"],
-        created:
-            json["created"] == null ? null : DateTime.parse(json["created"]),
+            : List<int>.from(json["characters"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "name": name == null ? null : name,
-        "air_date": airDate == null ? null : airDate,
+        "url": url == null ? null : url,
+        "air_date": airDate == null
+            ? null
+            : "${airDate!.year.toString().padLeft(4, '0')}-${airDate!.month.toString().padLeft(2, '0')}-${airDate!.day.toString().padLeft(2, '0')}",
         "episode": episode == null ? null : episode,
+        "image": image == null ? null : image,
+        "create_at": createAt == null ? null : createAt!.toIso8601String(),
         "characters": characters == null
             ? null
             : List<dynamic>.from(characters!.map((x) => x)),
-        "url": url == null ? null : url,
-        "created": created == null ? null : created!.toIso8601String(),
       };
 }

@@ -185,10 +185,7 @@ class _CreatAccountState extends State<SignUpScreen> {
                               SnackBar(content: Text(state.error.message!)));
                         }
                         if (state is AuthFetchedState) {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: ((context) => CustomBottomBar())));
+                          Navigator.pop(context);
                         }
                       },
                       builder: (context, state) {
@@ -201,11 +198,6 @@ class _CreatAccountState extends State<SignUpScreen> {
                               login: loginController.text,
                               password: passwordController.text,
                             ));
-                            print(nameController.text);
-                            print(surNameController.text);
-                            print(patronyMicController.text);
-                            print(loginController.text);
-                            print(passwordController.text);
                           },
                           text: 'Создать',
                         );

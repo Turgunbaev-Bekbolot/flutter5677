@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:rick_and_morty_app/commands/constans.dart';
 import 'package:rick_and_morty_app/helpers/catch_exepton_helper.dart';
 
 class ApiRequester {
@@ -11,7 +12,8 @@ class ApiRequester {
         responseType: ResponseType.json,
         receiveTimeout: 30000,
         headers: {
-          // "Authorization": "Token e46e88478d06c658a5d9bf9c88ea19816ee7709c"
+          "Authorization":
+              Constans.token == null ? '' : 'Token ${Constans.token}'
         },
         connectTimeout: 30000,
       ),

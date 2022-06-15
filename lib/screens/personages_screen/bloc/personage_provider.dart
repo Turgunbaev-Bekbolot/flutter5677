@@ -8,10 +8,10 @@ class UserProvider {
     try {
       ApiRequester requester = ApiRequester();
       Response response = await requester.toGet(
-        '/character',
+        '/character/',
       );
       if (response.statusCode == 200) {
-        List<CharacterModel> characterModelList = response.data['results']
+        List<CharacterModel> characterModelList = response.data
             .map<CharacterModel>((el) => CharacterModel.fromJson(el))
             .toList();
         return characterModelList;

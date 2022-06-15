@@ -10,11 +10,11 @@ class EpizodProvider {
     try {
       ApiRequester requester = ApiRequester();
       Response response = await requester.toGet(
-        '/episode',
+        '/episodes/',
       );
       log(response.data.toString());
       if (response.statusCode == 200) {
-        List<EpizodModel> locationModelList = response.data['results']
+        List<EpizodModel> locationModelList = response.data
             .map<EpizodModel>((el) => EpizodModel.fromJson(el))
             .toList();
         return locationModelList;

@@ -60,20 +60,16 @@ class _LocationScreenState extends State<LocationScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: ((context) => LocationInfo(
-                                          discription: state
-                                                  .locationModel?[index]
-                                                  .dimension ??
-                                              'test',
-                                          image: state
-                                              .locationModel![index].residents
-                                              .toString(),
-                                        ))));
+                                        discription: state.locationModel?[index]
+                                                .dimension ??
+                                            'test',
+                                        image: state.locationModel![index].image
+                                            .toString()))));
                           },
                           child: CustomButton(
                             isText: true,
                             location: state.locationModel![index].type!,
-                            image: state.locationModel![index].residents
-                                .toString(),
+                            image: state.locationModel![index].image.toString(),
                             measurement:
                                 state.locationModel![index].name.toString(),
                           ),

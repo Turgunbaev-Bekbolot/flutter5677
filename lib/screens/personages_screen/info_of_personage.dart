@@ -4,6 +4,7 @@ class InfoOfPersonage extends StatelessWidget {
   final String text;
   final String text2;
   final bool? isBool;
+  final String? race;
   final Widget? cont;
 
   const InfoOfPersonage({
@@ -12,6 +13,7 @@ class InfoOfPersonage extends StatelessWidget {
     required this.text2,
     this.isBool,
     this.cont,
+    this.race,
   }) : super(key: key);
 
   @override
@@ -65,7 +67,7 @@ class InfoOfPersonage extends StatelessWidget {
                       height: 3,
                     ),
                     Text(
-                      'Человек',
+                      race!,
                       style: TextStyle(
                         color: Color(0xff0B1E2D),
                         fontSize: 14,
