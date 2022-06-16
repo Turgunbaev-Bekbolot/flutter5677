@@ -1,19 +1,22 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:rick_and_morty_app/commands/constans.dart';
 import 'package:rick_and_morty_app/helpers/catch_exepton_helper.dart';
 
 class ApiRequester {
+  var box = Hive.box('tokenBox');
   static String url = 'https://rick-morty-flutter.herokuapp.com/api/v1';
   Future<Dio> initDio() async {
+    String token = await box.get('token', defaultValue: '');
     return Dio(
       BaseOptions(
         baseUrl: url,
         responseType: ResponseType.json,
         receiveTimeout: 30000,
         headers: {
-          "Authorization":
-              Constans.token == null ? '' : 'Token ${Constans.token}'
+          "Authorization": token,
+          // Constans.token == null ? '' : 'Token ${Constans.token}'
         },
         connectTimeout: 30000,
       ),

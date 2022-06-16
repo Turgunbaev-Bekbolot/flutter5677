@@ -189,6 +189,9 @@ class _CreatAccountState extends State<SignUpScreen> {
                         }
                       },
                       builder: (context, state) {
+                        if (state is AuthLoadingState) {
+                          return Center(child: CircularProgressIndicator());
+                        }
                         return SignInButton(
                           onTap: () {
                             authBloc.add(AuthSignUpEvent(

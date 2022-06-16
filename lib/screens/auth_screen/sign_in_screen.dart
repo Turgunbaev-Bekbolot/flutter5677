@@ -5,14 +5,14 @@ import 'package:rick_and_morty_app/screens/auth_screen/sign_up_screen.dart';
 import 'package:rick_and_morty_app/screens/widgets/custom_bottom_bar.dart';
 import 'package:rick_and_morty_app/screens/widgets/sign_in_button.dart';
 
-class LoginPassword extends StatefulWidget {
-  const LoginPassword({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginPassword> createState() => _LoginPasswordState();
+  State<SignInScreen> createState() => _LoginPasswordState();
 }
 
-class _LoginPasswordState extends State<LoginPassword> {
+class _LoginPasswordState extends State<SignInScreen> {
   final TextEditingController loginController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -137,7 +137,7 @@ class _LoginPasswordState extends State<LoginPassword> {
                           SnackBar(content: Text(state.error.message!)));
                     }
                     if (state is AuthFetchedState) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: ((context) => CustomBottomBar())));

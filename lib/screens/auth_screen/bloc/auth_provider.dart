@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:rick_and_morty_app/commands/constans.dart';
 import 'package:rick_and_morty_app/helpers/api_requester.dart';
 import 'package:rick_and_morty_app/helpers/catch_exepton_helper.dart';
@@ -45,7 +46,13 @@ class AuthProvider {
       });
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         log(response.data.toString());
-        Constans.token = response.data['auth_token'];
+        //Constans.token = response.data['auth_token'];
+        var box = Hive.box('tokenBox');
+        box.put(
+          'token',
+          'Token ${response.data['auth_token']}',
+        );
+        print(box.get('token'));
       } else {
         throw CatchException.convertException(response);
       }

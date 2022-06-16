@@ -9,14 +9,14 @@ class AuthRepository {
     required String password,
   }) {
     AuthProvider provider = AuthProvider();
-    provider.createUser(
+
+    return provider.createUser(
       firstName: name,
       lastName: surname,
       password: password,
       patronyMic: patronyMic,
       userName: password,
     );
-    return "";
   }
 
   login({
