@@ -35,6 +35,7 @@ class _StartScreenState extends State<StartScreen> {
   Future navigate() async {
     var box = Hive.box('tokenBox');
     String token = box.get('token', defaultValue: '');
+    await Future.delayed(Duration(seconds: 3));
     if (token == '') {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: ((context) => SignInScreen())));
@@ -42,8 +43,5 @@ class _StartScreenState extends State<StartScreen> {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: ((context) => CustomBottomBar())));
     }
-    await Future.delayed(Duration(seconds: 3));
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: ((context) => SignInScreen())));
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:rick_and_morty_app/screens/setting_screen/edit_profile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rick_and_morty_app/screens/start_screen/start_screen.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -200,6 +202,21 @@ class SettingScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                  onPressed: () async {
+                    await Hive.deleteFromDisk();
+                    await Hive.initFlutter();
+                    await Hive.openBox('tokenBox');
+
+                    Navigator.of(context, rootNavigator: true)
+                        .pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: ((context) => StartScreen())),
+                            (route) => false);
+                  },
+                  child: const Text('Выйти из аккаунта')),
+            ),
           ],
         ),
       ),
